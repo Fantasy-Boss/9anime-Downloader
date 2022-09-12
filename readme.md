@@ -5,7 +5,7 @@
 9anime Downloader
 =================
 
-#### Scrapper and Downloader for 9anime.vc and 9anime.se . \<BETA\>
+#### Scrapper and Downloader for 9anime. \<BETA\>
 
 * * *
 
@@ -23,6 +23,7 @@
 
 9anime.vc - <a href="https://9anime.vc" target="_blank">9anime.vc</a>  
 9anime.se - <a href="https://9anime.se" target="_blank">9anime.se</a>  
+9anime.pe - <a href="https://9anime.pe" target="_blank">9anime.pe</a>  
 
 * * *
 
