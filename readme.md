@@ -68,12 +68,12 @@
 &nbsp;  
 4\. Once The Download is ready, hit the Download button. After the file is download, Run it.  
 
-<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-4.png" alt="9anime Downloader" width="80%">  
+<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-4.png" alt="9anime Downloader" width="70%">  
 &nbsp;  
 
 &nbsp;  
 
-<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-5.png" alt="9anime Downloader" width="60%">  
+<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-5.png" alt="9anime Downloader" width="30%">  
 
 &nbsp;  
 
@@ -81,7 +81,7 @@ Then\.\.\.
 
 &nbsp;  
 
-<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-6.png" alt="9anime Downloader" width="80%">  
+<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-6.png" alt="9anime Downloader" width="60%">  
 
 5\. Done. All the Episodes are added to the IDM download queue. Now you can Start the download in your IDM as usual. \[ Download videos are **automatically** saved in a separate folder with the anime name. Example: \"IDM default video downloading path\\{anime\_name}\\Episode\_3\_.mp4\" \]  
 &nbsp;  
