@@ -1,6 +1,6 @@
 &nbsp;  
 
-9anime Downloader
+<img src="images/icon_x100.png" width="50" height="50">9anime Downloader
 =================
 
 #### Scrapper and Downloader for 9anime.vc and 9anime.se . \<BETA\>
