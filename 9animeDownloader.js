@@ -1,26 +1,26 @@
 // ==UserScript==
-// @name        9anime Downloader
-// @namespace  https://greasyfork.org/en/users/957626-fantasy-boss
-// @homepageURL https://github.com/Fantasy-Boss/9anime-Downloader
-// @supportURL https://www.buymeacoffee.com/FantasyBoss
-// @version     1.0.0
-// @description 9anime Scrapper and Downloader
-// @author      Fantasy Boss
-// @icon        https://www.google.com/s2/favicons?domain=9anime.id
-// @match       *://9anime.vc/watch/*
-// @match       *://9anime.se/watch/*
-// @match       https://ninjashare.to/download/*
-// @match       https://sbembed.com/*
-// @grant       GM_addStyle
-// @grant       GM_setValue
-// @grant       GM_getValue
-// @grant       GM_deleteValue
-// @grant       window.close
-// @require     https://code.jquery.com/jquery-3.6.1.min.js
-// @compatible chrome
-// @compatible firefox
-// @run-at      document-end
-// @license     MIT License
+// @name           9anime Downloader
+// @namespace      https://greasyfork.org/en/users/957626-fantasy-boss
+// @homepageURL    https://github.com/Fantasy-Boss/9anime-Downloader
+// @supportURL     https://www.buymeacoffee.com/FantasyBoss
+// @version        1.0.0
+// @description    9anime Scrapper and Downloader
+// @author         Fantasy Boss
+// @icon           https://www.google.com/s2/favicons?domain=9anime.id
+// @match          *://9anime.vc/watch/*
+// @match          *://9anime.se/watch/*
+// @match          https://ninjashare.to/download/*
+// @match          https://sbembed.com/*
+// @grant          GM_addStyle
+// @grant          GM_setValue
+// @grant          GM_getValue
+// @grant          GM_deleteValue
+// @grant          window.close
+// @require        https://code.jquery.com/jquery-3.6.1.min.js
+// @compatible     chrome
+// @compatible     firefox
+// @run-at         document-end
+// @license        MIT License
 // ==/UserScript==
 
 

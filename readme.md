@@ -42,6 +42,7 @@
 
 * * *
 
+&nbsp;  
 ### How to use:
 
 1\. Go to 9anime.vc or 9anime.se . Then click any anime you want to download.  
@@ -54,7 +55,7 @@
 ![9anime Downloader](https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-2.png)  
 &nbsp;  
 &nbsp;  
-3\. Wait for a few Minutes to finish the Scrapping \[ It takes almost 4-5 Minutes to scrap 12 Episodes, But it depends on your Internet Speed. And there will be lots of popups, but don't worry. They will close by themselves \]  
+3\. Wait for a few Minutes to finish the Scrapping \[ It takes almost 4-5 Minutes to scrap 12 Episodes, But it depends on your Internet Speed. And there will be lots of popups, but don't worry. They will close by themselves\. \]  
 
 ![9anime Downloader](https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-3.png)  
 &nbsp;  
@@ -85,7 +86,8 @@ This script is dedicated to those anime suckers out there. **Long Live Anime.**
 
 This is a personal Project. Any kind of feedback would be helpful. Post any Issues or Suggestions here - [Github](https://github.com/Fantasy-Boss/9anime-Downloader/issues/new).  
 
-If you want to support me then you can **[Buy me a coffee](https://www.buymeacoffee.com/FantasyBoss)**.
+If you want to support me then you can **[Buy me a coffee](https://www.buymeacoffee.com/FantasyBoss)**.  
+&nbsp;  
 
 * * *
 
