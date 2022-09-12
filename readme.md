@@ -1,6 +1,8 @@
 &nbsp;  
 
-<img src="images/icon_x100.png" width="20" height="20">  9anime Downloader
+<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/icon_x100.png">  
+
+9anime Downloader
 =================
 
 #### Scrapper and Downloader for 9anime.vc and 9anime.se . \<BETA\>
@@ -36,8 +38,9 @@
 
 5\. Go to your Tampermonkey or Greasemonkey dashboard and click on 9anime Downloader.  
 6\. Change The Settings To Your Preference.  
-&nbsp;  
-![9anime Downloader Settings](https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/setup-1.png)  
+
+<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/setup-1.png" alt="9anime Downloader Settings" width="80%">   
+
 &nbsp;
 
 * * *
@@ -47,32 +50,38 @@
 
 1\. Go to 9anime.vc or 9anime.se . Then click any anime you want to download.  
 
-![9anime Downloader](https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-1.png)  
+<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-1.png" alt="9anime Downloader" width="50%">  
+
 &nbsp;  
 &nbsp;  
 2\. In the episode list select the first episode then click Start. \[ You can choose SUB or DUB before starting the scrapper. \]  
 
-![9anime Downloader](https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-2.png)  
+<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-2.png" alt="9anime Downloader" width="70%">  
+
 &nbsp;  
 &nbsp;  
 3\. Wait for a few Minutes to finish the Scrapping \[ It takes almost 4-5 Minutes to scrap 12 Episodes, But it depends on your Internet Speed. And there will be lots of popups, but don't worry. They will close by themselves\. \]  
 
-![9anime Downloader](https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-3.png)  
+<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-3.png" alt="9anime Downloader" width="70%"> 
+
 &nbsp;  
 &nbsp;  
 4\. Once The Download is ready, hit the Download button. After the file is download, Run it.  
 
-![9anime Downloader](https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-4.png)  
+<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-4.png" alt="9anime Downloader" width="80%">  
+&nbsp;  
 
-![9anime Downloader](https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-5.png)  
 &nbsp;  
+
+<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-5.png" alt="9anime Downloader" width="60%">  
+
 &nbsp;  
-&nbsp;  
+
 Then\.\.\.  
+
 &nbsp;  
-&nbsp;  
-&nbsp;  
-![9anime Downloader](https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-6.png)  
+
+<img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-6.png" alt="9anime Downloader" width="80%">  
 
 5\. Done. All the Episodes are added to the IDM download queue. Now you can Start the download in your IDM as usual. \[ Download videos are **automatically** saved in a separate folder with the anime name. Example: \"IDM default video downloading path\\{anime\_name}\\Episode\_3\_.mp4\" \]  
 &nbsp;  
