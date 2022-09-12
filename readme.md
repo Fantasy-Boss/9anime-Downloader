@@ -19,7 +19,7 @@
 
 * * *
 
-### Support site list:
+### Supported sites list:
 
 9anime.vc - <a href="https://9anime.vc" target="_blank">9anime.vc</a>  
 9anime.se - <a href="https://9anime.se" target="_blank">9anime.se</a>  
