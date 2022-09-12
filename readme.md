@@ -21,8 +21,8 @@
 
 ### Support site list:
 
-9anime.vc - [9anime.vc](https://9anime.vc)  
-9anime.se - [9anime.se](https://9anime.se)
+9anime.vc - <a href="https://9anime.vc" target="_blank">9anime.vc</a>  
+9anime.se - <a href="https://9anime.se" target="_blank">9anime.se</a>  
 
 * * *
 
