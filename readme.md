@@ -67,7 +67,7 @@
 
 &nbsp;  
 &nbsp;  
-4\. Once The Download is ready, hit the Download button. After the file is download, Run it.  
+4\. Once The Download is ready, hit the Download button. After the file is downloaded, Run it. ( Important Note: Keep your IDM open before running the file. )
 
 <img src="https://raw.githubusercontent.com/Fantasy-Boss/9anime-Downloader/main/images/how-to-use-4.png" alt="9anime Downloader" width="70%">  
 &nbsp;  
