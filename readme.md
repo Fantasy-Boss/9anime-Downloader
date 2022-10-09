@@ -94,10 +94,12 @@ Then\.\.\.
 
 This script is dedicated to those anime suckers out there. **Long Live Anime.**  
 
-This is a personal Project. Any kind of feedback would be helpful. Post any Issues or Suggestions here - [Github](https://github.com/Fantasy-Boss/9anime-Downloader/issues/new).  
+Any kind of feedback would be helpful. Post any Issues or Suggestions here - [Github](https://github.com/Fantasy-Boss/9anime-Downloader/issues/new).  
 
 If you want to support me then you can **[Buy me a coffee](https://www.buymeacoffee.com/FantasyBoss)**.  
 &nbsp;  
+
+You can also try - [9anime Watch-List Custom Filter](https://greasyfork.org/en/scripts/452695-9anime-watch-list-custom-filter).  
 
 * * *
 
