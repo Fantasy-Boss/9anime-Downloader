@@ -3,7 +3,7 @@
 // @namespace      https://greasyfork.org/en/users/957626-fantasy-boss
 // @homepageURL    https://github.com/Fantasy-Boss/9anime-Downloader
 // @supportURL     https://github.com/Fantasy-Boss/9anime-Downloader/issues/new
-// @version        1.0.1
+// @version        1.0.2
 // @description    9anime Scrapper and Downloader
 // @author         Fantasy Boss
 // @icon           https://www.google.com/s2/favicons?domain=9anime.id
@@ -16,6 +16,7 @@
 // @grant          GM_setValue
 // @grant          GM_getValue
 // @grant          GM_deleteValue
+// @grant          GM_openInTab
 // @grant          window.close
 // @require        https://code.jquery.com/jquery-3.6.1.min.js
 // @compatible     chrome
@@ -73,18 +74,20 @@
         {
             let a_tags = $("#main-wrapper > div > div > div > div.dc-main > div.block-button.text-center > div.download-list > div.download-list-ul a")
             a_tags.map(async(i) => {
-                if (($(a_tags[i]).attr('href')).match('streamsb.com') !== null || ($(a_tags[i]).attr('href')).match('sbembed.com') !==   null) {
+                if (($(a_tags[i]).attr('href')).match('streamsb.com') !== null || ($(a_tags[i]).attr('href')).match('sbembed.com') !== null) {
                     await GM_setValue("9anime-post-data-ninjashare", $(a_tags[i]).attr('href'))
                 }
             })
             setTimeout(function() {
-                window.open(location, '_self', '').close();
-            }, 100);
+                    location.href = "#"
+                    window.close();
+            }, 300);
         } else if (location.href.match('sbembed') !== null)
         {
             if ($("#F1 > button") !== null) {
                 $("#F1 > button").click()
                 setInterval(()=> {$("#F1 > button").click()}, 4000)
+                setInterval(()=> {location.reload()}, 10000)
             }
             if ($("#container > div table") !== null) {
                 $("#container > div > table a").map((i)=> {
@@ -110,8 +113,9 @@
                 let msg = $("#container > div > span > a").attr('href')
                 await GM_setValue("9anime-post-data-sbembed", msg)
                 setTimeout(function() {
-                    window.open(location, '_self', '').close();
-                }, 100);
+                    location.href = "#"
+                    window.close();
+                }, 300);
 
             }
         } else if (location.href.match('9anime') !== null) {
@@ -140,7 +144,16 @@
 
                     // start button click
                     $('#servers-content > div.ps_-status #my-start-btn').click(async()=> {
-                        if ($("#episodes-page-1 > a:nth-child(1)").attr('class').match('active') !== null ) {
+                        var sure = true
+                        var ep_num = 1
+                        var last_ep_num = parseInt($("#episodes-page-1 > a:nth-last-child(2)").text())
+                        if ($("#episodes-page-1 > a:nth-child(1)").attr('class').match('active') === null ) {
+                            ep_num = parseInt($("#episodes-page-1 > a.active").text())
+                            let con_text = ((last_ep_num-ep_num) >= 1 ? `Do you want to download from Episode ${ep_num} - Episode ${last_ep_num}`: `Do you want to download only Episode ${ep_num}`)
+                            sure = confirm(con_text)
+                         }
+
+                        if (sure) {
                             let type = $('#servers-content > div.ps_-status #grabber-type').val()
                             if ($(`#servers-content > div.ps_-block.ps_-block-sub.servers-${type} > div.ps__-list > div:nth-child(1)`).is(":visible")) {
                                 loading = true
@@ -153,7 +166,7 @@
                                         await wait(100)
                                         let ninjashare = await GM_getValue("9anime-post-data-ninjashare", "")
                                         if (ninjashare !== "") {
-                                            window.open(ninjashare, '_blank');
+                                            GM_openInTab(ninjashare);
                                             await GM_deleteValue("9anime-post-data-ninjashare")
                                         }
                                     }
@@ -162,7 +175,7 @@
 
                                 let title = $(`#main-content > section.block_area.block_area-detail > div > div > div.film-infor > div.film-infor-top > h2`).text()
                                 title = (((title.replace(/[<>?\/|\\*]/g, " ")).replace(/:/g, "-")).replace(/"/g, "'")).trim()
-                                let epCount = $('#episodes-page-1 > a').length
+                                let epCount = (last_ep_num+1) - ep_num
 
 
                                 // get embed video links
@@ -211,12 +224,13 @@
                                 await GM_deleteValue("9anime-post-data-sbembed")
                                 for (let i = 1; i <= urls.length; i++) {
                                     let url = (urls[(i-1)])
-                                    window.open(url , '_blank')
+                                    GM_openInTab(url)
                                     while(true) {
                                         await wait(100)
                                         let value = await GM_getValue("9anime-post-data-sbembed", "")
                                         if (value !== "") {
-                                            let ep = { ep: i, name: `Episode_${i}_.mp4`, url: value }
+                                            let ep = { ep: ep_num, name: `Episode_${ep_num}_.mp4`, url: value }
+                                            ep_num++
                                             data.push(ep)
                                             await GM_deleteValue("9anime-post-data-sbembed")
                                             break
@@ -233,20 +247,24 @@
 
 
                                 // create One click queue for IDM
-                                let code = `@echo off \ncolor 2 \n@echo. \n@echo Created on ${(new Date(Date.now())).toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'})}
-                            \n@echo. \n"${IDM_Folder.replace(/\//g, "\\")}\\IDMan.exe" \n`
-                            for (let i = 1; i <= data.length; i++) {
-                                code += `"${IDM_Folder.replace(/\//g, "\\")}\\IDMan.exe" /a /f "${title}\\${data[(i-1)].name}" /d "${data[(i-1)].url}"\n`
-                            }
+                                if (data.length > 0) {
+                                    let code = `@echo off \ncolor 2 \n@echo. \n@echo Created on ${(new Date(Date.now())).toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'})} \n@echo. \n"${IDM_Folder.replace(/\//g, "\\")}\\IDMan.exe" \n`
+                                    for (let i = 1; i <= data.length; i++) {
+                                        code += `"${IDM_Folder.replace(/\//g, "\\")}\\IDMan.exe" /a /f "${title}\\${data[(i-1)].name}" /d "${data[(i-1)].url}"\n`
+                                    }
 
-                                let url = ''
-                                if (use_IDM) url = URL.createObjectURL(new Blob([(code)], {type: "application/octet-stream"}));
-                                else url = URL.createObjectURL(new Blob([(JSON.stringify(data))], {type: "application/json"}));
-                                let ready = `<label id="my-label" for="My Download">Ready</label><a title="My Download" id="real-down-btn" href="${url}" download="Downloader - ${title}${use_IDM? ".bat": ".json"}">Download</a>`
-                                loading = false
-                                $('#servers-content > div.ps_-status').html(ready)
+                                    let url = ''
+                                    if (use_IDM) url = URL.createObjectURL(new Blob([(code)], {type: "application/octet-stream"}));
+                                    else url = URL.createObjectURL(new Blob([(JSON.stringify(data))], {type: "application/json"}));
+                                    let ready = `<label id="my-label" for="My Download">Ready</label><a title="My Download" id="real-down-btn" href="${url}" download="Downloader - ${title}${use_IDM? ".bat": ".json"}">Download</a>`
+                                    loading = false
+                                    $('#servers-content > div.ps_-status').html(ready)
+                                } else {
+                                    let ready = `<label id="my-label">Error</label>`
+                                    $('#servers-content > div.ps_-status').html(ready)
+                                }
                             } else alert(`${type[0].toUpperCase()}ub for this anime is not available`)
-                        } else alert('Click on the First Episode then hit Start.')
+                        }
                     })
                 }
             }, 1)
