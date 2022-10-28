@@ -3,7 +3,7 @@
 // @namespace      https://greasyfork.org/en/users/957626-fantasy-boss
 // @homepageURL    https://github.com/Fantasy-Boss/9anime-Downloader
 // @supportURL     https://github.com/Fantasy-Boss/9anime-Downloader/issues/new
-// @version        1.0.2
+// @version        1.0.3
 // @description    9anime Scrapper and Downloader
 // @author         Fantasy Boss
 // @icon           https://www.google.com/s2/favicons?domain=9anime.id
@@ -70,20 +70,22 @@
             document.body.removeChild(TempText);
         }
 
-        if (location.href.match('ninjashare.to/download/') !== null)
-        {
+        if (location.href.match('ninjashare.to/download/') !== null) {
             let a_tags = $("#main-wrapper > div > div > div > div.dc-main > div.block-button.text-center > div.download-list > div.download-list-ul a")
-            a_tags.map(async(i) => {
-                if (($(a_tags[i]).attr('href')).match('streamsb.com') !== null || ($(a_tags[i]).attr('href')).match('sbembed.com') !== null) {
-                    await GM_setValue("9anime-post-data-ninjashare", $(a_tags[i]).attr('href'))
-                }
-            })
+            if (a_tags.length === 0) await GM_setValue("9anime-post-data-ninjashare", null)
+            else {
+                a_tags.map(async(i) => {
+                    if (($(a_tags[i]).attr('href')).match('streamsb.com') !== null || ($(a_tags[i]).attr('href')).match('sbembed.com') !== null) {
+                        await GM_setValue("9anime-post-data-ninjashare", $(a_tags[i]).attr('href'))
+                    }
+                })
+            }
             setTimeout(function() {
                     location.href = "#"
                     window.close();
             }, 300);
-        } else if (location.href.match('sbembed') !== null)
-        {
+        }
+        else if (location.href.match('sbembed') !== null) {
             if ($("#F1 > button") !== null) {
                 $("#F1 > button").click()
                 setInterval(()=> {$("#F1 > button").click()}, 4000)
@@ -118,7 +120,8 @@
                 }, 300);
 
             }
-        } else if (location.href.match('9anime') !== null) {
+        }
+        else if (location.href.match('9anime') !== null) {
 
             GM_addStyle(`#main-content > div.player-servers{height:150px;user-select:none}#servers-content > div.ps_-status{display:flex;flex-direction:column;justify-content:space-evenly;align-items:center}#my-label{font-size:large;color:#4aff13;}#grabber-type{width:38%;background:#1c1c1c;color:#777;outline:none;font-size:small;text-align:center;padding:5px 10px;border-radius:.25rem;transition:all .2s}#my-start-btn,#real-down-btn{background:#6829c1;color:#eee;cursor:pointer;padding:5px 10px;border-radius:.25rem;transition:all .2s;margin:3px 0;transform:scale(1.15);width:32%;text-align: center;}#my-start-btn:active,#real-down-btn:active{background:#8a8a8a}.disable{pointer-events:none}.lds-ring{display:inline-block;position:relative;width:10px;height:10px;margin-bottom:1px}.lds-ring div{box-sizing:border-box;display:block;position:absolute;width:6px;height:6px;border:6px solid #fff;border-radius:50%;animation:lds-ring 1.2s cubic-bezier(0.5,0,0.5,1) infinite;border-color:#fff transparent transparent}.lds-ring div:nth-child(1){animation-delay:-.45s}.lds-ring div:nth-child(2){animation-delay:-.3s}.lds-ring div:nth-child(3){animation-delay:-.15s}@keyframes lds-ring{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}#servers-content #my-progress{width:100%;height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;}#servers-content #progress-text {font-size:30px;text-align:center;width:100%;margin-bottom:25px;transition:all 500ms;}#servers-content #progress-bar-back {width:80%;height:20px;border-radius:50px;overflow:hidden;background-color:gray;}#servers-content #progress-bar-front{background-color:rgb(13, 255, 25);height:100%;width:0%;border-radius:inherit;transition:all 500ms;}`)
 
@@ -165,7 +168,8 @@
                                     while(true) {
                                         await wait(100)
                                         let ninjashare = await GM_getValue("9anime-post-data-ninjashare", "")
-                                        if (ninjashare !== "") {
+                                        if (ninjashare === null) await GM_setValue("9anime-post-data-sbembed", null)
+                                        else if (ninjashare !== "") {
                                             GM_openInTab(ninjashare);
                                             await GM_deleteValue("9anime-post-data-ninjashare")
                                         }
@@ -228,8 +232,14 @@
                                     while(true) {
                                         await wait(100)
                                         let value = await GM_getValue("9anime-post-data-sbembed", "")
-                                        if (value !== "") {
-                                            let ep = { ep: ep_num, name: `Episode_${ep_num}_.mp4`, url: value }
+                                        if (value === null) {
+                                            let ep = { ep: ep_num, name: `Episode_${ep_num} - Download link not available.`, url: null }
+                                            ep_num++
+                                            data.push(ep)
+                                            await GM_deleteValue("9anime-post-data-sbembed")
+                                            break
+                                        } else if (value !== "") {
+                                            let ep = { ep: ep_num, name: `Episode_${ep_num}`, url: value }
                                             ep_num++
                                             data.push(ep)
                                             await GM_deleteValue("9anime-post-data-sbembed")
@@ -248,10 +258,15 @@
 
                                 // create One click queue for IDM
                                 if (data.length > 0) {
-                                    let code = `@echo off \ncolor 2 \n@echo. \n@echo Created on ${(new Date(Date.now())).toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'})} \n@echo. \n"${IDM_Folder.replace(/\//g, "\\")}\\IDMan.exe" \n`
+                                    let empty = false
+                                    let code = `@echo off \ncolor A \n@echo. \n@echo   Created on ${(new Date(Date.now())).toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'})} \n@echo. \n"${IDM_Folder.replace(/\//g, "\\")}\\IDMan.exe" \n`
                                     for (let i = 1; i <= data.length; i++) {
-                                        code += `"${IDM_Folder.replace(/\//g, "\\")}\\IDMan.exe" /a /f "${title}\\${data[(i-1)].name}" /d "${data[(i-1)].url}"\n`
+                                        if (data[(i-1)].url === null) {
+                                            empty = true
+                                            code += `@echo   ${data[(i-1)].name}\n`
+                                        } else code += `"${IDM_Folder.replace(/\//g, "\\")}\\IDMan.exe" /a /f "${title}\\${data[(i-1)].name}_.mp4" /d "${data[(i-1)].url}"\n@echo   ${data[(i-1)].name} - Done.\n`
                                     }
+                                    code += `@echo.\n@echo   Finished.\n@echo.\n${empty === true ? '  @pause  ':''}`
 
                                     let url = ''
                                     if (use_IDM) url = URL.createObjectURL(new Blob([(code)], {type: "application/octet-stream"}));
@@ -268,7 +283,8 @@
                     })
                 }
             }, 1)
-        } else console.log('Unknown Host')
+        }
+        else console.log('Unknown Host')
     }, false);
 })();
 
